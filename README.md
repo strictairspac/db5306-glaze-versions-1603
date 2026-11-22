@@ -16,6 +16,17 @@ cp -n .env.example .env
 docker compose up -d --build --wait
 ```
 
+### 窑务有序入窑（无需容器，标准库可跑）
+
+独立于 MySQL/Redis 服务的有序入库与只读副本模块，仅用 Python 3.11 标准库 + SQLite：
+
+```sh
+python -I backend/scripts/demo_kiln.py        # 可复现业务剧本
+python -I backend/tests/test_kiln.py          # 25 个规约测试
+```
+
+命令行副本台与设计说明见 [docs/kiln-ledger.md](docs/kiln-ledger.md)。
+
 - 工作台 `http://127.0.0.1:18295`
 - FastAPI 文档 `http://127.0.0.1:19295/docs`
 - MySQL 8.0 端口 `127.0.0.1:17795`，账号 `app`，演示库 `workflow`
